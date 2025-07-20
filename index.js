@@ -27,44 +27,57 @@ const totalSections = sections.length;
 // 섹션 이동 함수
 let isTransitioning = false;
 
-function goToSection(newIndex, direction) {
+function goToSection(targetIndex, time) {
   if (
-    newIndex < 0 ||
-    newIndex >= sections.length ||
-    newIndex === currentIndex ||
+    targetIndex < 0 ||
+    targetIndex >= sections.length ||
+    targetIndex === currentIndex ||
     isTransitioning
   )
     return;
 
   isTransitioning = true;
 
-  const current = sections[currentIndex];
-  const next = sections[newIndex];
+  const direction = targetIndex > currentIndex ? "down" : "up";
+  const step = direction === "down" ? 1 : -1;
+  let index = currentIndex;
 
-  sections.forEach((s, i) => {
-    if (i !== currentIndex && i !== newIndex) {
-      s.classList.remove("exit", "current");
+  function animateStep() {
+    if (index === targetIndex) {
+      isTransitioning = false;
+      currentIndex = targetIndex;
+      return;
     }
-  });
 
-  current.classList.remove("current");
+    const nextIndex = index + step;
+    const current = sections[index];
+    const next = sections[nextIndex];
 
-  if (direction === "down") {
-    next.classList.add("active", "current");
-    current.classList.remove("exit");
-  } else {
-    current.classList.add("exit");
-    next.classList.add("active", "current");
+    if (direction === "down") {
+      // 현재 섹션 exit 안붙이고 그냥 next가 오른쪽에서 들어오도록
+      next.classList.add("active", "current");
+      next.classList.remove("exit");
+      current.classList.remove("current");
+    } else {
+      // 위로 갈 땐 current가 exit 붙고 오른쪽으로 나감
+      current.classList.add("exit");
+      next.classList.add("active", "current");
+      current.classList.remove("current");
+    }
+
+    // 애니메이션 재생: CSS에서 .active, .exit 클래스에 트랜지션 있음
+    // setTimeout으로 다음 단계 호출
+    setTimeout(() => {
+      // exit 클래스는 일정시간 후 제거
+      if (direction === "up") {
+        current.classList.remove("active", "exit");
+      }
+      index = nextIndex;
+      animateStep();
+    }, time); // 800ms는 CSS transition 시간과 맞춰주세요
   }
 
-  currentIndex = newIndex;
-
-  setTimeout(() => {
-    if (direction === "up") {
-      current.classList.remove("active", "exit");
-    }
-    isTransitioning = false;
-  }, 800);
+  animateStep();
 }
 
 // 초기 위치 설정
@@ -76,7 +89,7 @@ window.addEventListener("DOMContentLoaded", () => {
 navLinks.forEach((link, index) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    goToSection(index);
+    goToSection(index, 300);
   });
 });
 
@@ -87,7 +100,7 @@ window.addEventListener("wheel", (e) => {
   isScrolling = true;
 
   const direction = e.deltaY > 0 ? "down" : "up";
-  goToSection(currentIndex + (direction === "down" ? 1 : -1), direction);
+  goToSection(currentIndex + (direction === "down" ? 1 : -1), 700);
 
   setTimeout(() => {
     isScrolling = false;
