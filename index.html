@@ -1,9 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yeonhee's Portfolio</title>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="main-container">
+      <!-- 사이드바 -->
+      <div class="aside">
+        <div class="logo">
+          <a href="#"><span></span>PortFolio</a>
+        </div>
+        <ul class="nav">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skill">Skill</a></li>
+          <li><a href="#project">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- 본문 섹션 -->
+      <div class="main-content">
+        <div class="slides-container">
+          <section class="section active" style="background: lightblue">
+            <div class="container">
+              <div class="row">
+                <div class="home-info padd-15">
+                  <h3 class="hello">
+                    반갑습니다.<br />
+                    <span class="name">Web Creator</span> 홍길동 입니다.
+                  </h3>
+                  <h3 class="my-profession">
+                    저는 이러한 일을 합니다.<br />
+                    Web <span class="typing">Creator</span>
+                  </h3>
+                  <p>
+                    <br />
+                    새로운 도전을 두려워하지 않으며,<br />
+                    맡은 일은 책임감을 갖고 끝까지 해냅니다.
+                  </p>
+                  <a href="./pages/cv.html" class="btn">웹에서 이력서 보기</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section" style="background: lightgreen">
+            <h1>Section 2</h1>
+            <p>긴 세로 스크롤 가능</p>
+          </section>
+          <section class="section" style="background: lightcoral">
+            <h1>Section 3</h1>
+            <p>긴 세로 스크롤 가능</p>
+          </section>
+          <section class="section" style="background: lightsalmon">
+            <h1>Section 4</h1>
+            <p>긴 세로 스크롤 가능</p>
+          </section>
+          <section class="section" style="background: lightskyblue">
+            <h1>Section 5</h1>
+            <p>긴 세로 스크롤 가능</p>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- 스크립트 -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="index.js"></script>
+  </body>
 </html>
