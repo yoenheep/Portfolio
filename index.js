@@ -1,13 +1,6 @@
 /* ===== typing animation ===== */
 let typed = new Typed(".typing", {
-  strings: [
-    "",
-    "Product Manager",
-    "Designer",
-    "Programmer",
-    "Publisher",
-    "Marketer ",
-  ],
+  strings: ["", "Programmer", "Publisher", "Front-end"],
   typeSpeed: 100,
   BackSpeed: 60,
   loop: true,
@@ -109,5 +102,5 @@ window.addEventListener("wheel", (e) => {
 
 // 창 크기 변경 시 위치 다시 설정
 window.addEventListener("resize", () => {
-  goToSection(currentIndex);
+  goToSection(currentIndex, 300);
 });
