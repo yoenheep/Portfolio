@@ -1,7 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&display=swap");
+
+/* .ibm-plex-sans-kr-regular {
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "IBM Plex Sans KR", sans-serif;
+  font-style: normal;
 }
 
 ul {
@@ -10,6 +20,13 @@ ul {
 a {
   text-decoration: none;
   color: inherit;
+}
+.buttons {
+  border-radius: 50px;
+  background-color: #059669;
+  color: white;
+  padding: 10px 30px;
+  font-weight: 500;
 }
 
 html,
@@ -21,13 +38,12 @@ body {
 /* aside */
 .aside {
   width: 270px;
-  /* background: var(--bg-black-100); */
   background: white;
   position: fixed;
   left: 0;
   padding: 30px;
   height: 100vh;
-  border-right: 1px solid var(--bg-black-50);
+  border-right: 1px solid #f9fafb;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,14 +54,14 @@ body {
 
 .aside .logo {
   position: absolute;
-  top: 50px;
+  top: 120px;
   font-size: 30px;
   text-transform: capitalize;
 }
 
 .aside .logo a {
-  color: lightcoral;
-  font-weight: 700;
+  color: black;
+  font-weight: 600;
   padding: 15px 20px;
   font-size: 30px;
   letter-spacing: 5px;
@@ -53,30 +69,45 @@ body {
 }
 
 .aside .logo a span {
-  font-family: "Noto Sans KR", cursive;
   font-size: 40px;
 }
 
-.aside .logo a:before {
+/* 왼쪽 아래 모서리 - before */
+.aside .logo a::before {
   content: "";
   position: absolute;
   width: 20px;
   height: 20px;
-  border-bottom: 5px solid var(--skin-color);
-  border-left: 5px solid var(--skin-color);
+  border-left: 5px solid #10b981;
+  border-bottom: 5px solid #10b981;
   bottom: 0;
   left: 0;
+  transform-origin: bottom left;
+  transition: transform 0.6s ease;
+  transform: translate(0, 0) rotate(0deg);
 }
 
-.aside .logo a:after {
+/* 오른쪽 위 모서리 - after */
+.aside .logo a::after {
   content: "";
   position: absolute;
   width: 20px;
   height: 20px;
-  border-top: 5px solid var(--skin-color);
-  border-right: 5px solid var(--skin-color);
+  border-right: 5px solid #10b981;
+  border-top: 5px solid #10b981;
   top: 0;
   right: 0;
+  transform-origin: top right;
+  transition: transform 0.6s ease;
+  transform: translate(0, 0) rotate(0deg);
+}
+
+.aside .logo:hover a::before {
+  transform: translate(0, -270%) rotate(90deg);
+}
+
+.aside .logo:hover a::after {
+  transform: translate(0, 270%) rotate(90deg);
 }
 
 .aside .nav-toggler {
@@ -144,20 +175,16 @@ body {
 }
 
 .aside .nav li a {
-  font-size: 16px;
+  text-align: center;
+  font-size: 20px;
   font-weight: 600;
   display: block;
-  border-bottom: 1px solid var(--bg-black-50);
-  color: var(--text-black-900);
+  border-bottom: 1px solid #e5e7eb;
   padding: 5px 15px;
 }
 
-.aside .nav li a.active {
-  color: var(--skin-color);
-}
-
-.aside .nav li a i {
-  margin-right: 15px;
+.aside .nav li a.current {
+  color: #10b981;
 }
 
 /* 섹션 */
@@ -174,6 +201,7 @@ body {
 }
 
 .section {
+  background-color: #f9fafb;
   position: absolute;
   top: 0;
   left: 100%;
@@ -181,10 +209,10 @@ body {
   height: 100vh;
   transition: left 0.7s ease, z-index 0.3s;
   z-index: 0;
-  padding: 20px;
+  padding: 50px 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  overflow-y: auto;
 }
 
 .section.active {
@@ -196,4 +224,296 @@ body {
   /* 오른쪽으로 나가는 애니메이션 */
   left: 100%;
   z-index: 10;
+}
+
+.section-title {
+  position: relative;
+  font-size: 2em;
+  margin-bottom: 1.5em;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 0.5em;
+  width: 210px;
+  height: 45%;
+  background-color: #34d399;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.container {
+  width: 100%;
+}
+
+/* 홈 */
+#home {
+  position: relative;
+  align-items: center;
+}
+#home .container {
+  width: auto;
+}
+.my-profession {
+  font-weight: 800;
+  font-size: 2.8em;
+  margin-bottom: 0.1em;
+}
+.typing {
+  color: #10b981;
+}
+.hello {
+  font-size: 2.5em;
+  font-weight: 700;
+}
+.name {
+  color: #059669;
+}
+
+@keyframes bounce-horizontal {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.scroll-container {
+  position: absolute;
+  bottom: 3vh;
+  right: 3vw;
+  font-weight: 600;
+  animation: bounce-horizontal 1.2s ease-in-out infinite;
+}
+
+/* about */
+.about-content {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}
+
+.about-text {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+.about-text span {
+  color: #10b981;
+}
+
+.personal-info > .row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2em;
+}
+
+.info-item {
+  min-width: 35%;
+  padding: 5px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  font-size: 1.2em;
+}
+.info-item span {
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.personal-info .buttons {
+  margin-top: 2.3em;
+}
+
+.edu_exp {
+  margin-top: 1.3em;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8em;
+}
+
+.education,
+.experience {
+  width: 47%;
+}
+
+.education > .title,
+.experience > .title {
+  font-size: 1.6em;
+  margin-bottom: 1.3em;
+}
+
+.timeline-box {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.05);
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline .timeline-item {
+  position: relative;
+  padding-left: 37px;
+  padding-bottom: 50px;
+}
+
+.timeline .timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline .timeline-item::before {
+  content: "";
+  width: 1px;
+  position: absolute;
+  height: 100%;
+  left: 7px;
+  top: 0;
+  background-color: #10b981;
+}
+
+.timeline .circle-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.timeline .timeline-date {
+  font-weight: 500;
+  font-size: 1em;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.timeline .timeline-date .fa {
+  margin-right: 5px;
+}
+
+.timeline .timeline-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-transform: capitalize;
+  color: black;
+}
+
+.timeline .timeline-text {
+  font-weight: 400;
+  line-height: 25px;
+  font-size: 1em;
+  text-align: justify;
+  color: #374151;
+}
+
+/* 스킬 */
+
+/* 프로젝트 */
+
+/* 콘텍트 */
+.contact-title {
+  color: #10b981;
+  text-align: center;
+  font-size: 25px;
+  margin-bottom: 18px;
+}
+
+.contact-sub-title {
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.contact_info {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-info-item {
+  flex: 0 0 25%;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-info-item h4 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 15px 0 5px;
+}
+
+.contact-info-item p {
+  font-size: 16px;
+  line-height: 25px;
+  color: #374151;
+  font-weight: 400;
+}
+
+.contact-form {
+  max-width: 100%;
+}
+
+.name-email-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-form .form-name,
+.contact-form .form-email {
+  flex: 0 0 49%;
+  max-width: 50%;
+}
+
+.contact-form .form-title,
+.contact-form .form-content {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.contact-form .form-item {
+  margin-bottom: 25px;
+}
+
+.contact-form .form-item .form-control {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 10px 25px;
+  font-size: 16px;
+  color: #374151;
+  transition: all 0.3s ease;
+}
+
+.contact-form .form-item .form-control:focus {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+}
+
+.contact-form .form-item textarea.form-control {
+  height: 150px;
+}
+
+.contact-form .btn {
+  border: none;
+  font-size: 1em;
+  margin-bottom: 50px;
 }
