@@ -66,10 +66,7 @@ body {
   font-size: 30px;
   letter-spacing: 5px;
   position: relative;
-}
-
-.aside .logo a span {
-  font-size: 40px;
+  cursor: default;
 }
 
 /* 왼쪽 아래 모서리 - before */
@@ -358,7 +355,7 @@ body {
 .timeline-box {
   border-radius: 10px;
   background-color: white;
-  padding: 20px;
+  padding: 20px 30px 20px 20px;
   box-shadow: 0px 0px 30px 8px rgba(0, 0, 0, 0.05);
 }
 
@@ -424,10 +421,77 @@ body {
 }
 
 /* 스킬 */
+#skill .section-title::after {
+  width: 105px;
+}
+
+.skills {
+  max-width: 90%;
+  padding: 0 10px;
+}
+
+.skills .skill-item {
+  max-width: 100%;
+  margin-bottom: 6em;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+.skills .skill-info h5 {
+  font-weight: 700;
+  font-size: 1.5em;
+  color: black;
+  text-transform: capitalize;
+}
+
+.skill-info .skill-percent {
+  font-weight: 400;
+  font-size: 1.1em;
+  text-transform: capitalize;
+}
+
+.skills .skill-item .progress {
+  background-color: #e5e7eb;
+  height: 10px;
+  border-radius: 4px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.skills .skill-item .progress-in {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 4px;
+  background-color: #059669;
+}
+
+.skill-program {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  height: 7vh;
+  padding: 0 5px;
+}
+.skill-program img {
+  height: 100%;
+  object-fit: contain;
+}
 
 /* 프로젝트 */
 
 /* 콘텍트 */
+#contact .section-title::after {
+  width: 255px;
+}
+
 .contact-title {
   color: #10b981;
   text-align: center;
