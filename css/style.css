@@ -577,6 +577,10 @@ body {
   height: 150px;
 }
 
+.contact-form .form-group {
+  text-align: center;
+}
+
 .contact-form .btn {
   border: none;
   font-size: 1em;
