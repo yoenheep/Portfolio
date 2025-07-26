@@ -13,7 +13,7 @@
       <!-- 사이드바 -->
       <div class="aside">
         <div class="logo">
-          <a href="#">PortFolio</a>
+          <a href="#">Portfolio</a>
         </div>
         <ul class="nav">
           <li>
@@ -276,8 +276,56 @@
           </section>
 
           <section class="section" id="project">
-            <h1>Section 4</h1>
-            <p>긴 세로 스크롤 가능</p>
+                    <!-- project container Start -->
+        <div class="container">
+
+          <div class="row">
+            <div class="section-title">
+              <h2>Project</h2>
+            </div>
+          </div>
+          <!-- project Item Filter Start -->
+          <div class="row">
+            <div class="project-heading">
+              <div class="project_filters">
+                <span class="project_item active-project" data-filter="all">모두보기</span>
+                <span class="project_item" data-filter="Web_App">웹 / 앱</span>
+                <span class="project_item" data-filter="Game">게임</span>
+                <span class="project_item" data-filter="Modeling">모델링</span>
+              </div>
+            </div>
+          </div>
+          <!-- project Item Filter End -->
+
+          <!-- project Item Container Start -->
+          <div class="project_container">
+           
+          </div>
+          <!-- project Item Container End -->
+
+          <!-- project Popup Start -->
+          <div class="project_popup">
+            <div class="project_popup-inner">
+              <div class="project_popup-content grid">
+                <div class="project_popup-close">
+                  <span></span>
+                </div>
+                <div class="pp_thumbnail">
+                  <img src="" alt="" class="project_pop-img">
+                </div>
+                <div class="project_popup-info">
+                  <div class="project_popup-subtitle"><span></span></div>
+                  <h3 class="project_popup-title"></h3>
+                  <div class="project_popup-body">
+                    <p class="details_description"></p>
+                    <ul class="details_info">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- project Popup End -->
           </section>
 
           <section class="section" id="contact">
@@ -326,6 +374,6 @@
 
     <!-- 스크립트 -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="./js/index.js"></script>
+    <script type="module" src="./js/index.js"></script>
   </body>
 </html>

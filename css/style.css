@@ -486,6 +486,249 @@ body {
 }
 
 /* 프로젝트 */
+#project .section-title::after {
+  width: 165px;
+}
+
+.project_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  color: black;
+  margin-top: 60px;
+  /* overflow: hidden; */
+}
+
+.project-heading {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.project_filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  /* column-gap: .75rem; */
+}
+
+.project_item {
+  cursor: pointer;
+  color: black;
+  padding: 8px 16px 6px;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.project_item:hover {
+  border: 1px solid #10b981;
+}
+
+.project_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  flex: 0 0 30%;
+  max-width: 30%;
+  background-color: white;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border: #f3f4f6;
+  overflow: hidden;
+  /* Transition 적용 불가 - Mixitup */
+}
+
+.project_card:hover {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+  transform: scale(1.05);
+}
+
+.project_img {
+  border-radius: 0.5rem;
+  margin-bottom: 1em;
+  width: 100%;
+  border: 1px solid #d1d5db;
+}
+
+.project_subtitle {
+  font-size: 0.9em;
+}
+
+.project_title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  flex: 1;
+}
+
+.project_button {
+  color: #059669;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  column-gap: 0.25rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.project_item-details {
+  display: none;
+}
+
+/* Active Item project */
+.active-project {
+  background-color: #10b981;
+  color: white;
+}
+
+/* project Popup */
+.project_popup {
+  position: fixed;
+  top: 0;
+  left: 270px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.project_popup.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project_popup-inner {
+  position: relative;
+  background-color: white;
+  border: 1px solid #f3f4f6;
+  width: 580px;
+  border-radius: 0.5rem;
+  padding: 2.5rem;
+  color: black;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.project_popup-content {
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  column-gap: 5rem;
+}
+
+/* .project_popup-close { 
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 1.5rem;
+  color: var(--skin-color);
+  cursor: pointer;
+  background: var(--bg-black-100);
+} */
+
+.project_popup-close {
+  height: 40px;
+  width: 45px;
+  border: 1px solid #f9fafb;
+  cursor: pointer;
+  position: absolute;
+  /* top: 30px; */
+  bottom: 30px;
+  right: 30px;
+  border-radius: 5px;
+  background-color: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+  transition: all 0.3s ease;
+}
+
+.project_popup-close span {
+  position: relative;
+  height: 2px;
+  width: 18px;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.project_popup-close span::before {
+  content: "";
+  height: 2px;
+  width: 18px;
+  background: #10b981;
+  position: absolute;
+  transform: rotate(45deg);
+  /* top: 50%;
+  left: 50%; */
+}
+
+.project_popup-close span::after {
+  content: "";
+  height: 2px;
+  width: 18px;
+  background: #10b981;
+  position: absolute;
+  transform: rotate(-45deg);
+  /* top: 50%;
+  left: 50%; */
+}
+
+.project_pop-img {
+  width: 100%;
+  margin: 0 auto;
+  /* max-height: 300px; */
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+}
+
+.project_popup-subtitle {
+  font-size: 0.9em;
+  /* margin-bottom: 0.25rem; */
+}
+
+.project_popup-title {
+  color: black;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.details_description {
+  font-size: 1.1em;
+  margin-bottom: 2rem;
+}
+
+.details_info li {
+  margin-bottom: 0.5em;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.details_info li:last-child {
+  margin-bottom: 0;
+}
+
+.details_info li span {
+  font-weight: normal;
+}
+
+.details_info li a {
+  text-transform: lowercase;
+  color: #10b981;
+}
 
 /* 콘텍트 */
 

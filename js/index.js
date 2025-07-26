@@ -1,3 +1,5 @@
+import { projectList } from "./projectList.js";
+
 /* ===== typing animation ===== */
 let typed = new Typed(".typing", {
   strings: ["", "Programmer", "Publisher", "Front-end"],
@@ -11,11 +13,11 @@ let typed = new Typed(".typing", {
 // 네비게이션 요소들
 const nav = document.querySelector(".nav");
 const navLinks = nav.querySelectorAll("a");
-const sections = document.querySelectorAll(".section");
+const sections = document.querySelectorAll(".section"); // ✅ sections 변수 정의 추가
+
 const mainContent = document.querySelector(".main-content");
 
 let currentIndex = 0;
-const totalSections = sections.length;
 
 // 섹션 이동 함수
 let isTransitioning = false;
@@ -167,29 +169,160 @@ hireMeBtn.addEventListener("click", (e) => {
   goToSection(sectionIndex, 300);
 });
 
-// // Email JS
-// (function () {
-//   // https://dashboard.emailjs.com/admin/account
-//   emailjs.init("1LsCcPyoJuh3rVgNc");
-// })();
+// 프로젝트 팝업 요소들
+const projectPopup = document.querySelector(".project_popup");
+const popupClose = document.querySelector(".project_popup-close");
+const popupImg = document.querySelector(".project_pop-img");
+const popupSubtitle = document.querySelector(".project_popup-subtitle span");
+const popupTitle = document.querySelector(".project_popup-title");
+const popupDescription = document.querySelector(".details_description");
+const popupInfoList = document.querySelector(".details_info");
 
-// window.onload = function () {
-//   document
-//     .getElementById("contact-form")
-//     .addEventListener("submit", function (event) {
-//       event.preventDefault();
-//       // generate a five digit number for the contact_number variable
-//       this.contact_number.value = (Math.random() * 100000) | 0;
-//       // these IDs from the previous steps
-//       emailjs.sendForm("service_p9u31ze", "template_ajad98f", this).then(
-//         function () {
-//           console.log("SUCCESS!");
-//           alert("전송이 완료되었습니다");
-//           location.reload();
-//         },
-//         function (error) {
-//           console.log("FAILED...", error);
-//         }
-//       );
-//     });
-// };
+// 팝업 열기 함수
+function openProjectPopup(project) {
+  // 팝업 내용 업데이트
+  popupImg.src = project.image;
+  popupImg.alt = project.title;
+  popupSubtitle.textContent = project.tag; // 한국어 태그 표시
+  popupTitle.textContent = project.title;
+  popupDescription.textContent = project.description;
+
+  // 상세 정보 업데이트
+  popupInfoList.innerHTML = `
+    <li>제작 - <span>${project.period}</span></li>
+    <li>사용 - <span>${project.use.join(", ")}</span></li>
+    ${
+      project.Team
+        ? `<li>구분 - <span>팀 프로젝트</span></li>`
+        : `<li>구분 - <span>개인 프로젝트</span></li>`
+    }
+    ${
+      project.Team && project.rule
+        ? `<li>역할 - <span>${project.rule.join(", ")}</span></li>`
+        : ""
+    }
+    ${
+      project.pptUrl
+        ? `<li>기획보고서 - <span><a href="${project.pptUrl}" target="_blank">PPT 보기</a></span></li>`
+        : ""
+    }
+    ${
+      project.gitUrl
+        ? `<li>GitHub - <span><a href="${project.gitUrl}" target="_blank">Repository 보기</a></span></li>`
+        : ""
+    }
+    ${
+      project.siteUrl
+        ? `<li>배포주소 - <span><a href="${project.siteUrl}" target="_blank">사이트 보기</a></span></li>`
+        : ""
+    }
+  `;
+
+  // 팝업 열기
+  projectPopup.classList.add("open");
+  // ✅ body와 main-content 모두 스크롤 방지
+  document.body.style.overflow = "hidden";
+  if (mainContent) {
+    mainContent.style.overflow = "hidden";
+  }
+}
+
+// 팝업 닫기 함수
+function closeProjectPopup() {
+  projectPopup.classList.remove("open");
+  // ✅ 스크롤 복원
+  document.body.style.overflow = "auto";
+  if (mainContent) {
+    mainContent.style.overflow = "hidden"; // main-content는 원래 hidden이었음
+  }
+}
+
+// 팝업 닫기 이벤트
+popupClose.addEventListener("click", closeProjectPopup);
+
+// 팝업 배경 클릭시 닫기
+projectPopup.addEventListener("click", (e) => {
+  if (e.target === projectPopup) {
+    closeProjectPopup();
+  }
+});
+
+// ESC 키로 팝업 닫기
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && projectPopup.classList.contains("open")) {
+    closeProjectPopup();
+  }
+});
+
+// 프로젝트 필터링 기능
+const filterButtons = document.querySelectorAll(".project_item");
+let allProjectCards = []; // 모든 프로젝트 카드를 저장할 배열
+
+// 필터링 함수 - filterTag 기반으로 수정
+function filterProjects(filterValue) {
+  allProjectCards.forEach((card) => {
+    if (filterValue === "all" || card.classList.contains(filterValue)) {
+      card.style.display = "flex";
+      // 애니메이션 효과
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "scale(1)";
+      }, 100);
+    } else {
+      card.style.opacity = "0";
+      card.style.transform = "scale(0.8)";
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 300);
+    }
+  });
+}
+
+// 필터 버튼 이벤트 리스너
+filterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // 팝업이 열려있으면 필터링 방지
+    if (projectPopup.classList.contains("open")) {
+      return;
+    }
+
+    // 활성 클래스 업데이트
+    filterButtons.forEach((btn) => btn.classList.remove("active-project"));
+    button.classList.add("active-project");
+
+    // 필터 값 가져오기
+    const filterValue = button.dataset.filter;
+    filterProjects(filterValue);
+  });
+});
+
+// 프로젝트 카드리스트 불러오기 - filterTag 기반으로 수정
+const container = document.querySelector(".project_container");
+
+if (container) {
+  projectList.forEach((project, index) => {
+    const card = document.createElement("div");
+    // filterTag를 클래스로 사용하여 필터링 가능하게 함
+    card.className = `project_card mix ${project.filterTag}`;
+
+    card.innerHTML = `
+      <img src="${project.image}" alt="" class="project_img">
+      <p class="project_subtitle">${project.tag}</p>
+      <h3 class="project_title">${project.title}</h3>
+      <span class="project_button" data-project-index="${index}">더보기</span>
+    `;
+
+    container.appendChild(card);
+
+    // allProjectCards 배열에 추가
+    allProjectCards.push(card);
+
+    // "더보기" 버튼에 클릭 이벤트 추가
+    const moreButton = card.querySelector(".project_button");
+    moreButton.addEventListener("click", () => {
+      openProjectPopup(project);
+    });
+  });
+} else {
+  console.error("project_container를 찾을 수 없습니다.");
+}
