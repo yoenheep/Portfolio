@@ -258,19 +258,23 @@ document.addEventListener("keydown", (e) => {
 const filterButtons = document.querySelectorAll(".project_item");
 let allProjectCards = []; // 모든 프로젝트 카드를 저장할 배열
 
-// 필터링 함수 - filterTag 기반으로 수정
 function filterProjects(filterValue) {
+  const container = document.querySelector(".project_container");
+
   allProjectCards.forEach((card) => {
-    if (filterValue === "all" || card.classList.contains(filterValue)) {
+    const shouldShow =
+      filterValue === "all" || card.classList.contains(filterValue);
+
+    if (shouldShow) {
       card.style.display = "flex";
-      // 애니메이션 효과
-      setTimeout(() => {
-        card.style.opacity = "1";
-        card.style.transform = "scale(1)";
-      }, 100);
+      // 브라우저 리플로우 강제 실행
+      card.offsetHeight;
+      card.style.opacity = "1";
+      card.style.transform = "scale(1)";
     } else {
       card.style.opacity = "0";
       card.style.transform = "scale(0.8)";
+
       setTimeout(() => {
         card.style.display = "none";
       }, 300);

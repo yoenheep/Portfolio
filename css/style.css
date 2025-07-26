@@ -495,7 +495,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1em;
+  gap: 2em;
   color: black;
   margin-top: 60px;
   /* overflow: hidden; */
@@ -510,7 +510,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 1em;
   flex-wrap: wrap;
   /* column-gap: .75rem; */
 }
@@ -534,7 +534,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
-  flex: 0 0 30%;
+  flex: 0 0 25%;
   max-width: 30%;
   background-color: white;
   padding: 1.25rem;
@@ -542,11 +542,33 @@ body {
   border: #f3f4f6;
   overflow: hidden;
   /* Transition 적용 불가 - Mixitup */
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .project_card:hover {
   box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
   transform: scale(1.05);
+}
+
+/* 필터링 애니메이션을 위한 클래스 */
+.project_card.hidden {
+  opacity: 0;
+  transform: scale(0.8);
+  /* display: none 대신 visibility 사용 */
+  visibility: hidden;
+  /* 또는 position을 사용하여 레이아웃에서 제거 */
+  position: absolute;
+  z-index: -1;
+}
+
+.project_card.visible {
+  opacity: 1;
+  transform: scale(1);
+  visibility: visible;
+  position: relative;
+  z-index: 1;
 }
 
 .project_img {
