@@ -152,7 +152,7 @@ window.addEventListener("wheel", (e) => {
   scrollBuffer = false; // 이동 후에는 다시 초기화
   setTimeout(() => {
     isScrolling = false;
-  }, 800);
+  }, 1000);
 });
 
 // 창 크기 변경 시 위치 다시 설정
@@ -203,17 +203,24 @@ function openProjectPopup(project) {
     }
     ${
       project.pptUrl
-        ? `<li>기획보고서 - <span><a href="${project.pptUrl}" target="_blank">PPT 보기</a></span></li>`
+        ? `<li>기획보고서 - <span><a href="${project.pptUrl}" target="_blank">PPT/PDF 보기</a></span></li>`
         : ""
     }
     ${
       project.gitUrl
-        ? `<li>GitHub - <span><a href="${project.gitUrl}" target="_blank">Repository 보기</a></span></li>`
+        ? `<li>GitHub - <span><a href="${project.gitUrl}" target="_blank">Github 보기</a></span></li>`
+        : ""
+    }
+    ${
+      project.videoUrl
+        ? `<li>시연영상 - <span><a href="${project.videoUrl}" target="_blank">시연영상 보기</a></span></li>`
         : ""
     }
     ${
       project.siteUrl
-        ? `<li>배포주소 - <span><a href="${project.siteUrl}" target="_blank">사이트 보기</a></span></li>`
+        ? `<li>배포주소 - <span><a href="${project.siteUrl}" target="_blank">${
+            project.tag === "App" ? "apk 파일 다운로드하기" : "사이트 보기"
+          }</a></span></li>`
         : ""
     }
   `;
@@ -221,20 +228,15 @@ function openProjectPopup(project) {
   // 팝업 열기
   projectPopup.classList.add("open");
   // ✅ body와 main-content 모두 스크롤 방지
-  document.body.style.overflow = "hidden";
-  if (mainContent) {
-    mainContent.style.overflow = "hidden";
-  }
+  isScrolling = true;
 }
 
 // 팝업 닫기 함수
 function closeProjectPopup() {
   projectPopup.classList.remove("open");
-  // ✅ 스크롤 복원
-  document.body.style.overflow = "auto";
-  if (mainContent) {
-    mainContent.style.overflow = "hidden"; // main-content는 원래 hidden이었음
-  }
+  setTimeout(() => {
+    isScrolling = false;
+  }, 1000);
 }
 
 // 팝업 닫기 이벤트
