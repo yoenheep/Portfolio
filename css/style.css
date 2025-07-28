@@ -837,7 +837,7 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
 }
 
 .contact-info-item {

@@ -347,3 +347,30 @@ if (container) {
 } else {
   console.error("project_container를 찾을 수 없습니다.");
 }
+
+// Email JS
+(function () {
+  // https://dashboard.emailjs.com/admin/account
+  emailjs.init("SeFE31-v2N_bNsly2");
+})();
+
+window.onload = function () {
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      // generate a five digit number for the contact_number variable
+      this.contact_number.value = (Math.random() * 100000) | 0;
+      // these IDs from the previous steps
+      emailjs.sendForm("service_mjfiprq", "template_358wlch", this).then(
+        function () {
+          console.log("SUCCESS!");
+          alert("전송이 완료되었습니다");
+          location.reload();
+        },
+        function (error) {
+          console.log("FAILED...", error);
+        }
+      );
+    });
+};
