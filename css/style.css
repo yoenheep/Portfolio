@@ -309,7 +309,24 @@ body {
   color: #10b981;
 }
 
-.personal-info > .row {
+.personal-info {
+  display: flex;
+  gap: 1em;
+}
+
+.IDphoto-img {
+  width: 13%;
+}
+.IDphoto-img > img {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.personal-info-wrap {
+  width: 75%;
+}
+
+.personal-info-wrap > .row {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -317,7 +334,7 @@ body {
 }
 
 .info-item {
-  min-width: 35%;
+  min-width: 335px;
   padding: 5px;
   border-bottom: 1px solid #e5e7eb;
   font-weight: 600;
@@ -328,7 +345,7 @@ body {
   font-size: 0.9em;
 }
 
-.personal-info .buttons {
+.personal-info-wrap .buttons {
   margin-top: 2.3em;
 }
 
@@ -712,6 +729,36 @@ body {
   left: 50%; */
 }
 
+.project_pop_a {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.project_pop_a::before {
+  content: "영상보기";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 98%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  border-radius: 0.5rem;
+}
+
+.project_pop_a:hover::before {
+  opacity: 1;
+}
+
 .project_pop-img {
   width: 100%;
   margin: 0 auto;
@@ -770,9 +817,9 @@ body {
 }
 
 .contact-img {
-  height: 15vh;
+  height: 11vh;
   text-align: center;
-  margin: 11vh 0 3vh;
+  margin-bottom: 0.5em;
 }
 .contact-img > img {
   height: 100%;
@@ -790,12 +837,12 @@ body {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 }
 
 .contact-info-item {
-  flex: 0 0 50%;
+  flex: 0 0 25%;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .contact-info-item h4 {

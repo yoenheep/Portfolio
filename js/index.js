@@ -171,21 +171,41 @@ hireMeBtn.addEventListener("click", (e) => {
 
 // 프로젝트 팝업 요소들
 const projectPopup = document.querySelector(".project_popup");
+const projectThumbnail = document.querySelector(".pp_thumbnail");
 const popupClose = document.querySelector(".project_popup-close");
-const popupImg = document.querySelector(".project_pop-img");
+// const popupImg = document.querySelector(".project_pop-img");
 const popupSubtitle = document.querySelector(".project_popup-subtitle span");
 const popupTitle = document.querySelector(".project_popup-title");
 const popupDescription = document.querySelector(".details_description");
 const popupInfoList = document.querySelector(".details_info");
 
+function checkThumbnail(project) {
+  let result = "";
+  if (project.videoUrl) {
+    if (project.etc === "walkee") {
+      result = `<a href=${project.videoUrl} target="_blank" class='project_pop_a'><img src=${project.image} alt="" class="project_pop-img"></a>`;
+    } else if (project.tag === "게임") {
+      result = `<iframe src=${project.videoUrl} frameborder="0"  allowfullscreen allow="autoplay;" style="width: 100%; aspect-ratio: 16 / 9; border: none;"></iframe>`;
+    } else {
+      result = `<video src=${project.videoUrl} controls autoplay width= "100%" height= "100%"></video>`;
+    }
+  } else {
+    result = `<img src=${project.image} alt="" class="project_pop-img"></img>`;
+  }
+
+  return result;
+}
+
 // 팝업 열기 함수
 function openProjectPopup(project) {
   // 팝업 내용 업데이트
-  popupImg.src = project.image;
-  popupImg.alt = project.title;
+  // popupImg.src = project.image;
+  // popupImg.alt = project.title;
   popupSubtitle.textContent = project.tag; // 한국어 태그 표시
   popupTitle.textContent = project.title;
   popupDescription.textContent = project.description;
+
+  projectThumbnail.innerHTML = checkThumbnail(project);
 
   // 상세 정보 업데이트
   popupInfoList.innerHTML = `
@@ -209,11 +229,6 @@ function openProjectPopup(project) {
     ${
       project.gitUrl
         ? `<li>GitHub - <span><a href="${project.gitUrl}" target="_blank">Github 보기</a></span></li>`
-        : ""
-    }
-    ${
-      project.videoUrl
-        ? `<li>시연영상 - <span><a href="${project.videoUrl}" target="_blank">시연영상 보기</a></span></li>`
         : ""
     }
     ${
