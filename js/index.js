@@ -359,6 +359,21 @@ window.onload = function () {
     .getElementById("contact-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
+
+      // 사용자 입력용 input, textarea만 필터링 (hidden, disabled 제외)
+      const inputs = this.querySelectorAll("input, textarea");
+      for (let input of inputs) {
+        const isHidden =
+          input.type === "hidden" ||
+          input.disabled ||
+          input.offsetParent === null;
+        if (!isHidden && input.value.trim() === "") {
+          alert("모든 항목을 입력해주세요.");
+          input.focus();
+          return; // 제출 중단
+        }
+      }
+
       // generate a five digit number for the contact_number variable
       this.contact_number.value = (Math.random() * 100000) | 0;
       // these IDs from the previous steps
