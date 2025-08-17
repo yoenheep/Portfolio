@@ -134,7 +134,7 @@ export const projectList = [
     gitUrl: "https://github.com/yoenheep/Capston",
     siteUrl: "",
     pptUrl: "./project_pdf/quizventure_pdf.pdf",
-    videoUrl: "https://www.youtube.com/embed/X_2lFTLSQZU?autoplay=1",
+    videoUrl: "https://www.youtube.com/embed/X_2lFTLSQZU",
   },
   {
     filterTag: "Game",
@@ -151,7 +151,7 @@ export const projectList = [
     gitUrl: "",
     siteUrl: "",
     pptUrl: "./project_pdf/altF4_pdf.pdf",
-    videoUrl: "https://www.youtube.com/embed/gW7VAnjjbs4?autoplay=1",
+    videoUrl: "https://www.youtube.com/embed/gW7VAnjjbs4",
   },
   {
     filterTag: "Modeling",

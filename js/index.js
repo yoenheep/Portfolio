@@ -182,10 +182,10 @@ const popupInfoList = document.querySelector(".details_info");
 function checkThumbnail(project) {
   let result = "";
   if (project.videoUrl) {
-    if (project.etc === "walkee") {
+    if (project.tag === "App") {
       result = `<a href=${project.videoUrl} target="_blank" class='project_pop_a'><img src=${project.image} alt="" class="project_pop-img"></a>`;
     } else if (project.tag === "게임") {
-      result = `<iframe src=${project.videoUrl} frameborder="0"  allowfullscreen allow="autoplay;" style="width: 100%; aspect-ratio: 16 / 9; border: none;"></iframe>`;
+      result = `<iframe src="${project.videoUrl}?autoplay=1" frameborder="0"  allowfullscreen allow="autoplay;" style="width: 100%; aspect-ratio: 16 / 9; border: none;"></iframe>`;
     } else {
       result = `<video src=${project.videoUrl} controls autoplay width= "100%" height= "100%"></video>`;
     }
@@ -248,6 +248,9 @@ function openProjectPopup(project) {
 
 // 팝업 닫기 함수
 function closeProjectPopup() {
+  // 팝업 안의 video 멈추기
+  projectThumbnail.innerHTML = "";
+
   projectPopup.classList.remove("open");
   setTimeout(() => {
     isScrolling = false;
