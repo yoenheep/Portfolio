@@ -1,6 +1,24 @@
 // projects.js
 export const projectList = [
   {
+    filterTag: "Design",
+    title: "영진직업전문학교 메인페이지 디자인 리뉴얼",
+    description:
+      "영진직업전문학교의 메인페이지를 차분하면서 가독성을 높인 디자인으로 변경하였습니다.",
+    tag: "Design",
+    image: "./image/project/yjjDesign.png",
+    Team: false,
+    rule: ["디자인"],
+    use: ["Figma"],
+    period: "2025.11.26 ~ 2025.11.26",
+    etc: "",
+    gitUrl: "",
+    siteUrl:
+      "https://www.figma.com/design/i9Inn7poZPV7c3Bkj9h4Do/%EC%98%81%EC%A7%84%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90-%EB%A9%94%EC%9D%B8%ED%8E%98%EC%9D%B4%EC%A7%80-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%A6%AC%EB%89%B4%EC%96%BC?node-id=0-1&t=MDZcWVHlzyqclpcU-1",
+    pptUrl: "",
+    videoUrl: "",
+  },
+  {
     filterTag: "Web_App",
     title: "GPS 트래킹 기반 아트 러닝 어플",
     description:
