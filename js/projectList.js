@@ -2,6 +2,52 @@
 export const projectList = [
   {
     filterTag: "Design",
+    title: "겨울철 영양제 추천 카드뉴스",
+    description:
+      "겨울의 파란색과 영양제의 건강한 느낌을 살려서 카드뉴스를 제작하였습니다",
+    tag: "Cardnews",
+    image: [
+      "./image/project/supplement_cardnews/1.png",
+      "./image/project/supplement_cardnews/2.png",
+      "./image/project/supplement_cardnews/3.png",
+      "./image/project/supplement_cardnews/4.png",
+      "./image/project/supplement_cardnews/5.png",
+    ],
+    Team: false,
+    rule: ["디자인"],
+    use: ["Photoshop"],
+    period: "2025.12.09 ~ 2025.12.09",
+    etc: "",
+    gitUrl: "",
+    siteUrl: "",
+    pptUrl: "",
+    videoUrl: "",
+  },
+  {
+    filterTag: "Design",
+    title: "크리스마스 영화 추천 카드뉴스",
+    description:
+      "크리스마스의 분위기를 살리면서 포근한 느낌의 카드뉴스를 제작하였습니다.",
+    tag: "Cardnews",
+    image: [
+      "./image/project/chrismas_cardnews/1.png",
+      "./image/project/chrismas_cardnews/2.png",
+      "./image/project/chrismas_cardnews/3.png",
+      "./image/project/chrismas_cardnews/4.png",
+      "./image/project/chrismas_cardnews/5.png",
+    ],
+    Team: false,
+    rule: ["디자인"],
+    use: ["Photoshop"],
+    period: "2025.12.09 ~ 2025.12.09",
+    etc: "",
+    gitUrl: "",
+    siteUrl: "",
+    pptUrl: "",
+    videoUrl: "",
+  },
+  {
+    filterTag: "Design",
     title: "영진직업전문학교 메인페이지 디자인 리뉴얼",
     description:
       "영진직업전문학교의 메인페이지를 차분하면서 가독성을 높인 디자인으로 변경하였습니다.",

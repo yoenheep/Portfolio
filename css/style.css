@@ -779,6 +779,87 @@ body {
   margin-bottom: 0.5rem;
 }
 
+/* 카드뉴스 슬라이더 스타일 */
+.cardnews-slider {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide-image {
+  width: 100%;
+  height: auto;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slide-image.active {
+  display: block;
+  opacity: 1;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s ease;
+}
+
+.slide-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.indicator:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .details_description {
   font-size: 1.1em;
   margin-bottom: 2rem;
